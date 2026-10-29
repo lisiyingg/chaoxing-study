@@ -1,0 +1,102 @@
+.account-wrap {
+    padding: 28px 32px;
+    background-color: #ffffff;
+    min-height: 100vh;
+}
+
+.account-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #222222;
+    margin-bottom: 20px;
+}
+
+.account-tab {
+    border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 28px;
+}
+
+.account-content {
+    max-width: 600px;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+}
+
+.form-row label {
+    width: 90px;
+    color: #333333;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.form-value {
+    font-size: 14px;
+    color: #333333;
+}
+
+.radio-group {
+    display: flex;
+    gap: 24px;
+}
+
+.radio-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #333333;
+    cursor: pointer;
+}
+
+.radio-item input {
+    cursor: pointer;
+}
+
+.link-edit {
+    color: #3672e9;
+    font-size: 13px;
+    margin-left: 12px;
+}
+
+.link-edit:hover {
+    text-decoration: underline;
+}
+
+.link-add {
+    color: #3672e9;
+    font-size: 14px;
+}
+
+.link-add:hover {
+    text-decoration: underline;
+}
+
+.unit-row {
+    padding-left: 90px;
+    align-items: flex-start;
+}
+
+.unit-box {
+    padding: 10px 14px;
+    background-color: #f7f8fa;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.unit-name {
+    font-size: 14px;
+    color: #333333;
+    margin-bottom: 4px;
+}
+
+.unit-sub {
+    font-size: 12px;
+    color: #888888;
+}

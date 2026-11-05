@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>学习通个人空间</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/layout.css">
+</head>
+<body>
+    <header class="top-header">
+        <div class="header-left">
+            <span>重庆理工大学(学生)</span>
+        </div>
+        <div class="header-right">
+            <span>输入邀请码</span>
+
+            <div class="user-info">
+                <img id="header-avatar-btn" src="./images/renyuan.png" alt="李思颖" class="header-avatar">
+                <span>李思颖</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-user">
+                <img src="./images/renyuan.png" alt="李思颖" class="user-avatar-img">
+                <div class="username">李思颖</div>
+            </div>
+
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item active" data-page="page-home">
+                    <img src="./images/shouye.png" alt="首页" class="menu-icon">
+                    <span>首页</span>
+                </a>
+
+                <a href="#" class="menu-item" data-page="page-common">
+                    <img src="./images/changyong.png" alt="常用" class="menu-icon">
+                    <span>常用</span>
+                </a>
+
+                <a href="#" class="menu-item" data-page="page-app">
+                    <img src="./images/yingyong.png" alt="应用中心" class="menu-icon">
+                    <span>应用中心</span>
+                </a>
+
+                <a href="#" class="menu-item" data-page="page-course">
+                    <img src="./images/kecheng.png" alt="课程" class="menu-icon">
+                    <span>课程</span>
+                </a>
+
+                <a href="#" class="menu-item" data-page="page-sign">
+                    <img src="./images/shu.png" alt="微专业报名" class="menu-icon">
+                    <span>微专业报名</span>
+                </a>
+
+                <a href="#" class="menu-item" data-page="page-note">
+                    <img src="./images/jibiji.png" alt="笔记" class="menu-icon">
+                    <span>笔记</span>
+                </a>
+
+                <a href="#" class="menu-item" data-page="page-msg">
+                    <img src="./images/a-xiaoxixianxing.png" alt="消息" class="menu-icon">
+                    <span>消息</span>
+                </a>
+
+                <a href="#" class="menu-item" data-page="page-group">
+                    <img src="./images/xiaozuyanxiu.png" alt="小组" class="menu-icon">
+                    <span>小组</span>
+                </a>
+
+                <a href="#" class="menu-item" data-page="page-cloud">
+                    <img src="./images/yunpan.png" alt="云盘" class="menu-icon">
+                    <span>云盘</span>
+                </a>
+
+                <a href="#" class="menu-item" data-page="page-contact">
+                    <img src="./images/tongxunlu.png" alt="通讯录" class="menu-icon">
+                    <span>通讯录</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="page-content" id="page-home">
+                <h2>首页</h2>
+                <p>首页内容区域</p>
+            </div>
+            <div class="page-content" id="page-common" style="display:none">
+                <h2>常用</h2>
+                <p>常用页面</p>
+            </div>
+            <div class="page-content" id="page-app" style="display:none">
+                <h2>应用中心</h2>
+                <p>应用中心页面</p>
+            </div>
+            <div class="page-content" id="page-course" style="display:none">
+                <h2>课程</h2>
+                <p>课程页面</p>
+            </div>
+            <div class="page-content" id="page-sign" style="display:none">
+                <h2>微专业报名</h2>
+                <p>微专业报名页面</p>
+            </div>
+            <div class="page-content" id="page-note" style="display:none">
+                <h2>笔记</h2>
+                <p>笔记页面</p>
+            </div>
+            <div class="page-content" id="page-msg" style="display:none">
+                <h2>消息</h2>
+                <p>消息页面</p>
+            </div>
+            <div class="page-content" id="page-group" style="display:none">
+                <h2>小组</h2>
+                <p>小组页面</p>
+            </div>
+            <div class="page-content" id="page-cloud" style="display:none">
+                <h2>云盘</h2>
+                <p>云盘页面</p>
+            </div>
+            <div class="page-content" id="page-contact" style="display:none">
+                <h2>通讯录</h2>
+                <p>通讯录页面</p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const menuItems = document.querySelectorAll('.sidebar-menu .menu-item');
+        const allPages = document.querySelectorAll('.page-content');
+
+        function switchMainPage(pageId){
+            allPages.forEach(p=>p.style.display='none');
+            menuItems.forEach(m=>m.classList.remove('active'));
+            document.getElementById(pageId).style.display='block';
+        }
+        menuItems.forEach(item=>{
+            item.onclick = function(e){
+                e.preventDefault();
+                const targetPage = this.dataset.page;
+                switchMainPage(targetPage);
+                this.classList.add('active');
+            }
+        })
+
+        const avatarBtn = document.getElementById('header-avatar-btn');
+        avatarBtn.onclick = function(){
+            location.href = "./account.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>账号管理</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/account.css">
+</head>
+<body>
+    <div class="account-wrap">
+        <div class="account-title">
+            <img src="./images/zhanghaoguanli.png" alt="账号管理" class="acc-icon">
+            <span>账号管理</span>
+        </div>
+
+        <div class="account-tab">
+            <div class="tab-item active" data-tab="info">基本资料</div>
+            <div class="tab-item" data-tab="avatar">修改头像</div>
+            <div class="tab-item" data-tab="pwd">密码管理</div>
+            <div class="tab-item" data-tab="cancel">注销账号</div>
+            <div class="tab-item" data-tab="lang">语言</div>
+        </div>
+
+        <div class="account-content" id="info">
+            <div class="form-row">
+                <label>姓名</label>
+                <span class="form-value">李思颖</span>
+            </div>
+
+            <div class="form-row">
+                <label>id</label>
+                <span class="form-value">418661496</span>
+            </div>
+
+            <div class="form-row">
+                <label>性别</label>
+                <div class="radio-group">
+                    <label class="radio-item">
+                        <input type="radio" name="gender" value="male">
+                        <span>男</span>
+                    </label>
+                    <label class="radio-item">
+                        <input type="radio" name="gender" value="female" checked>
+                        <span>女</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label>手机号</label>
+                <span class="form-value">
+                    13389623403
+                    <a href="#" class="link-edit">修改</a>
+                </span>
+            </div>
+
+            <div class="form-row">
+                <label>单位</label>
+                <a href="#" class="link-add">+ 添加单位</a>
+            </div>
+
+            <div class="form-row unit-row">
+                <div class="unit-box">
+                    <div class="unit-name">重庆理工大学</div>
+                    <div class="unit-sub">学号/工号:12523040221</div>
+                </div>
+            </div>
+
+            <div class="form-row unit-row">
+                <div class="unit-box">
+                    <div class="unit-name">重庆理工大学图书馆</div>
+                    <div class="unit-sub">学号/工号:12523040221</div>
+                </div>
+            </div>
+        </div>
+        <div class="account-content" id="avatar" style="display: none;">
+            <div class="form-row">
+                <label>头像</label>
+                <div class="form-value">
+                    <img id="img-show" src="./images/renyuan.png" width="100" alt="头像预览">
+                    <input type="file" id="img-input" accept="image/*">
+                    <button id="img-save">保存头像</button>
+                </div>
+            </div>
+        </div>
+        <div class="account-content" id="pwd" style="display: none;">
+            <div class="form-row">
+                <label>旧密码</label>
+                <input type="password" id="old-pwd">
+            </div>
+            <div class="form-row">
+                <label>新密码</label>
+                <input type="password" id="new-pwd">
+            </div>
+            <div class="form-row">
+                <label>确认密码</label>
+                <input type="password" id="sure-pwd">
+            </div>
+            <div class="form-row">
+                <label></label>
+                <button id="pwd-sub">提交修改</button>
+                <button id="go-forget">忘记密码</button>
+            </div>
+            <div id="forget-pop" style="display:none;margin-top:15px;border:1px solid #ccc;padding:16px;">
+                <p>忘记密码页面</p>
+                <button id="back-pwd">返回密码管理</button>
+            </div>
+        </div>
+
+        <div class="account-content" id="cancel" style="display: none;">
+            <div class="form-row">
+                <label></label>
+                <button id="open-cancel">申请注销账号</button>
+            </div>
+            <div id="cancel-pop" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);align-items:center;justify-content:center;">
+                <div style="background:#fff;padding:20px;border-radius:6px;width:300px;margin:100px auto;">
+                    <p>确定要注销账号吗？</p>
+                    <button id="ok-cancel">确认注销</button>
+                    <button id="close-cancel">取消</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="account-content" id="lang" style="display: none;">
+            <div class="form-row">
+                <label>语言选择</label>
+                <button id="btn-cn">中文</button>
+                <button id="btn-en">English</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/avatar.js"></script>
+    <script src="./js/pwd.js"></script>
+    <script src="./js/cancel.js"></script>
+    <script>
+        const tabItems = document.querySelectorAll('.tab-item');
+        const contentBox = document.querySelectorAll('.account-content');
+
+        for(let i=0; i<tabItems.length; i++){
+            tabItems[i].onclick = function(){
+                for(let k=0; k<tabItems.length; k++){
+                    tabItems[k].classList.remove('active');
+                }
+                this.classList.add('active');
+                for(let j=0; j<contentBox.length; j++){
+                    contentBox[j].style.display = 'none';
+                }
+                let targetId = this.dataset.tab;
+                document.getElementById(targetId).style.display = 'block';
+            }
+        }
+
+        document.querySelector('#open-cancel').onclick = function(){
+            document.querySelector('#cancel-pop').style.display = 'flex';
+        }
+        document.querySelector('#close-cancel').onclick = function(){
+            document.querySelector('#cancel-pop').style.display = 'none';
+        }
+        document.querySelector('#ok-cancel').onclick = function(){
+            alert("账号注销成功！");
+            document.querySelector('#cancel-pop').style.display = 'none';
+        }
+
+        const btnCn = document.getElementById('btn-cn');
+        const btnEn = document.getElementById('btn-en');
+        const textList = [
+            { el: document.querySelector('.account-title span'), cn:"账号管理", en:"Account Manage" },
+            { el: tabItems[0], cn:"基本资料", en:"Profile" },
+            { el: tabItems[1], cn:"修改头像", en:"Change Avatar" },
+            { el: tabItems[2], cn:"密码管理", en:"Password" },
+            { el: tabItems[3], cn:"注销账号", en:"Cancel Account" },
+            { el: tabItems[4], cn:"语言", en:"Language" }
+        ];
+        function backInfoTab(){
+            tabItems.forEach(t=>t.classList.remove('active'));
+            tabItems[0].classList.add('active');
+            contentBox.forEach(c=>c.style.display='none');
+            document.getElementById('info').style.display='block';
+        }
+        btnCn.onclick = function(){
+            textList.forEach(item=>item.el.innerText = item.cn);
+            backInfoTab();
+        }
+        btnEn.onclick = function(){
+            textList.forEach(item=>item.el.innerText = item.en);
+            backInfoTab();
+        }
+    </script>
+</body>
+</html>
